@@ -55,7 +55,7 @@ For details, please refer to the [quick-start guide](quickstart/README.md).
 ## Installation
 **Build Requirements**
 
-* JDK 6 installed
+* JDK 6 installed ([jdk1.6_45](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html))
 * JDK 8 installed
 * Maven 3.2.x+ installed
 * JAVA_6_HOME environment variable set to JDK 6 home directory.
@@ -102,9 +102,7 @@ We welcome any documentation contribution.
 ## Contribution
 We welcome any and all suggestions.
 
-For plugin development, take a look at our [plugin samples](https://github.com/naver/pinpoint-plugin-sample "Pinpoint Plugin Samples project") project to get an idea of how we do instrumentation. The samples will provide you with example codes to help you get started. You can also join Gitter below for any questions regarding plugin development.
-
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/naver/pinpoint-plugin-sample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+For plugin development, take a look at our [plugin samples](https://github.com/naver/pinpoint-plugin-sample "Pinpoint Plugin Samples project") project to get an idea of how we do instrumentation. The samples will provide you with example codes to help you get started.
 
 Please make a pull-request against our `master` branch for contributions.
 

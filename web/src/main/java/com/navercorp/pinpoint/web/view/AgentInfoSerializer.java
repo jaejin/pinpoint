@@ -59,13 +59,12 @@ public class AgentInfoSerializer extends JsonSerializer<AgentInfo> {
         jgen.writeStringField("vmVersion", agentInfo.getVmVersion());
         jgen.writeStringField("agentVersion", agentInfo.getAgentVersion());
         jgen.writeObjectField("serverMetaData", agentInfo.getServerMetaData());
+        jgen.writeObjectField("jvmInfo", agentInfo.getJvmInfo());
 
         AgentStatus status = agentInfo.getStatus();
-        if (status == null) {
-            status = new AgentStatus(agentInfo.getAgentId());
-            status.setState(AgentLifeCycleState.UNKNOWN);
+        if (status != null) {
+            jgen.writeObjectField("status", status);
         }
-        jgen.writeObjectField("status", status);
 
         jgen.writeNumberField("initialStartTimestamp", agentInfo.getInitialStartTimestamp());
 

@@ -16,25 +16,29 @@
 
 package com.navercorp.pinpoint.bootstrap.config;
 
-import com.navercorp.pinpoint.bootstrap.util.NumberUtils;
-import com.navercorp.pinpoint.bootstrap.util.spring.PropertyPlaceholderHelper;
-import com.navercorp.pinpoint.common.util.PropertyUtils;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+
+import com.navercorp.pinpoint.bootstrap.logging.JavaLoggerFactory;
+import com.navercorp.pinpoint.bootstrap.util.NumberUtils;
+import com.navercorp.pinpoint.bootstrap.util.spring.PropertyPlaceholderHelper;
+import com.navercorp.pinpoint.common.util.PropertyUtils;
 
 /**
  * @author emeroad
  * @author netspider
  */
 public class DefaultProfilerConfig implements ProfilerConfig {
-    private static final Logger logger = Logger.getLogger(DefaultProfilerConfig.class.getName());
+    private static final Logger logger = JavaLoggerFactory.getLogger(DefaultProfilerConfig.class.getName());
     private static final String DEFAULT_IP = "127.0.0.1";
 
     private final Properties properties;
@@ -758,6 +762,27 @@ public class DefaultProfilerConfig implements ProfilerConfig {
         if (logger.isLoggable(Level.INFO)) {
             logger.info(propertyName + "=" + result);
         }
+        return result;
+    }
+
+    @Override
+    public Map<String, String> readPattern(String propertyNamePatternRegex) {
+        final Pattern pattern = Pattern.compile(propertyNamePatternRegex);
+        final Map<String, String> result = new HashMap<String, String>();
+        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
+            if (entry.getKey() instanceof String && entry.getValue() instanceof String) {
+                final String key = (String) entry.getKey();
+                if (pattern.matcher(key).matches()) {
+                    final String value = (String) entry.getValue();
+                    result.put(key, value);
+                }
+            }
+        }
+
+        if (logger.isLoggable(Level.INFO)) {
+            logger.info(propertyNamePatternRegex + "=" + result);
+        }
+
         return result;
     }
 

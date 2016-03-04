@@ -19,14 +19,15 @@
         <module>jackson</module>
         <module>cubrid-jdbc</module>
         <module>mysql-jdbc</module>
+        <module>mariadb-jdbc</module>
         <module>postgresql-jdbc</module>
         <module>jtds</module>
         <module>dbcp</module>
         <module>oracle-jdbc</module>
         <module>jdk-http</module>
-		<module>json-lib</module>
+        <module>json-lib</module>
         <module>redis</module>
-		<module>tomcat</module>
+        <module>tomcat</module>
         <module>thrift</module>
         <module>user</module>
         <module>arcus</module>
@@ -39,6 +40,7 @@
         <module>okhttp</module>
         <module>log4j</module>
         <module>logback</module>
+        <module>dubbo</module>
     </modules>
 
     <dependencies>
@@ -70,6 +72,11 @@
         <dependency>
             <groupId>com.navercorp.pinpoint</groupId>
             <artifactId>pinpoint-mysql-jdbc-driver-plugin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.navercorp.pinpoint</groupId>
+            <artifactId>pinpoint-mariadb-jdbc-driver-plugin</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -175,6 +182,11 @@
         <dependency>
             <groupId>com.navercorp.pinpoint</groupId>
             <artifactId>pinpoint-logback-plugin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.navercorp.pinpoint</groupId>
+            <artifactId>pinpoint-dubbo-plugin</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
